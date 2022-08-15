@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Usuń wydarzenie')"></head>
+<body>
+
+<nav th:replace="fragments/navbar :: myNavbar" ></nav>
+
+<h1>Usuń wydarzenie</h1>
+<form method="post">
+    <div>
+        Nazwa wydarzenia: <p th:text="${event.name}"></p>
+        Data wydarzenia: <p th:text="${event.startDateTime}"></p>
+        Miejsce wydarzenia: <p th:text="${event.location}"></p>
+        Opis wydarzenia: <p th:text="${event.description}"></p>
+    </div>
+    <input type="submit" value="Usuń">
+</form>
+<a th:href="@{/events}">Lista wydarzeń</a>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:replace="fragments/scripts :: scripts"></script>
+
+</body>
+</html>

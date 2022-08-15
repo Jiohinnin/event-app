@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Home')"></head>
+
+<body>
+
+<nav th:replace="fragments/navbar :: myNavbar" ></nav>
+
+<h1 class="mt-5 text-center display-4 ">Lista komentarzy</h1>
+
+<form class="form-floating" method="post">
+        <div th:each="comment: ${comments}" class="container-fluid col p-5 my-5 border">
+
+            <label for="date"><strong>Data: </strong></label>
+            <div id="date" class="p-2 bg-light border" th:text="${#temporals.format(comment.getCreationDate(), 'dd.MM.yyyy - HH:mm')}"></div>
+
+            <label for="description"><strong>Opis: </strong></label>
+            <div id="description" class="p-2 bg-light border" th:text="${comment.getDescription()}"></div>
+
+            <a type="button" class="mt-2 btn btn-secondary" th:href="@{'/comments/editComment/{id}'(id=${comment.id})}">Edytuj</a>
+
+            <a type="button" class="mt-2 btn btn-secondary" th:href="@{'/comments/deleteComment/{id}'(id=${comment.id})}"> Usuń</a>
+        </div>
+</form>
+
+<div class="container-fluid">
+    <a type="button" class="mt-2 btn btn-secondary" th:href="@{/comments/addComment}">dodaj komentarz</a>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
+</html>

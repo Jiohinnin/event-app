@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Dodaj wydarzenie')"></head>
+<body>
+
+<nav th:replace="fragments/navbar :: myNavbar" ></nav>
+
+<div class="container-fluid p-5 bg-info text-white text-center">
+    <h1>Dodaj nowe wydarzenie</h1>
+</div>
+
+<form method="post" th:action="@{/events/addEvent}" class="container p-5 my-5 border">
+
+    <div>
+        <label for="name" class="form-label"><strong>Nazwa wydarzenia:</strong></label>
+        <input id="name" class="form-control" type="text" name="name">
+    </div>
+
+    <div>
+        <label for="startDate" class="form-label"><strong>Data i godzina rozpoczęcia: </strong></label>
+        <input id="startDate" class="form-control" type="datetime-local" name="startDateTime">
+    </div>
+    <div>
+        <label for="endDateTime" class="form-label"><strong>Data i godzina zakończenia: </strong></label>
+        <input id="endDateTime" class="form-control" type="datetime-local" name="endDateTime">
+    </div>
+
+    <div>
+        <label for="location" class="form-label"><strong>Gdzie odbędzie się wydarzenie: </strong></label>
+        <input id="location" class="form-control" type="text" name="location">
+    </div>
+
+    <div>
+        <label for="description" class="form-label"><strong>Opis wydarzenia: </strong></label>
+        <textarea id="description" class="form-control" rows="3" name="description"></textarea>
+    </div>
+
+    <div id="add-button" >
+         <input role="button" type="submit" class="btn btn-success btn-sm" value="Dodaj wydarzenie">
+    </div>
+</form>
+
+<div class="container-fluid p-5 bg-info text-white text-center">
+    <a role="button" th:href="@{/events}" class="btn btn-primary">Lista wydarzeń</a>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:replace="fragments/scripts :: scripts"></script>
+
+</body>
+</html>
